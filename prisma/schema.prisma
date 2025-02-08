@@ -1,0 +1,68 @@
+// Supabase
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String  @id @default(uuid())
+  email     String  @unique
+  name      String
+  password  String
+  role      Role    @default(USER)
+  
+  // Relationship to levels
+  levels    Levels[]
+  class     Class[]
+
+  // Timestamp
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Level
+model Levels {
+  id            String @id @default(uuid())
+  photoLevel    Int @default(0)
+  mediaLevel    Int @default(0)
+  graphicLevel  Int @default(0)
+  networkLevel  Int @default(0)
+  dataLevel     Int @default(0)
+  liveLevel     Int @default(0)
+
+  userId     String
+  user       User   @relation(fields: [userId], references: [id])
+}
+
+// Class 
+model Class {
+  id            String @id @default(uuid())
+  GRAPHIC       Boolean @default(false)
+  MEDIA         Boolean @default(false)
+  PHOTO         Boolean @default(false)
+  LIVEMAN       Boolean @default(false)
+  FULLSTACK     Boolean @default(false)
+
+  ClassRank     ClassRank[]
+  userId        String
+  user          User   @relation(fields: [userId], references: [id])
+}
+
+
+model ClassRank {
+  id      String @id @default(uuid())
+  newbie  Boolean @default(false)
+  senior  Boolean @default(false)
+
+  classId String
+  class   Class   @relation(fields: [classId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
