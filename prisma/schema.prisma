@@ -1,4 +1,4 @@
-// Supabase
+// TIDB
 generator client {
   provider = "prisma-client-js"
 }
@@ -7,6 +7,8 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+// User Start
 
 model User {
   id        String  @id @default(uuid())
@@ -18,6 +20,7 @@ model User {
   // Relationship to levels
   levels    Levels[]
   class     Class[]
+  progress  UserCourseProgress[]
 
   // Timestamp
   createdAt DateTime @default(now())
@@ -52,7 +55,6 @@ model Class {
   user          User   @relation(fields: [userId], references: [id])
 }
 
-
 model ClassRank {
   id      String @id @default(uuid())
   newbie  Boolean @default(false)
@@ -66,3 +68,60 @@ enum Role {
   ADMIN
   USER
 }
+
+// User End
+
+// Course Start
+
+model Course {
+  id          String @id @default(uuid())
+  title       String
+  description String?
+  tier        String
+  type        CourseType @default(UNIVERSAL)
+  lessons     Lesson[]
+  progress    UserCourseProgress[] // Moved progress to Course level
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id          String @id @default(uuid())
+  title       String
+  description String?
+  content     Content[]
+
+  courseId    String
+  course      Course @relation(fields: [courseId], references: [id])
+}
+
+model Content {
+  id          String @id @default(uuid())
+  topic       String
+  paragraph   String
+  lessonID    String
+  lesson      Lesson @relation(fields: [lessonID], references: [id])
+}
+
+// Track User's progress at the Course level
+model UserCourseProgress {
+  id        String @id @default(uuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id])
+  courseId  String
+  course    Course @relation(fields: [courseId], references: [id])
+  progress  Float  @default(0) 
+  completed Boolean @default(false) 
+}
+
+enum CourseType {
+  PHOTO
+  MEDIA
+  GRAPHIC
+  DATA
+  LIVE
+  NETWORK
+  UNIVERSAL
+}
+
+// Course End

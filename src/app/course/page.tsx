@@ -1,11 +1,19 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
+import CardBorder from '../components/Course/cardborder/cardborder'
+import SearchBar from '../components/searchbar';
 
 function page() {
-  return (
-    <div>
-      
-    </div>
-  )
+    const [searchTerm, setSearchTerm] = useState("");
+  
+
+    return (
+      <div>
+        <SearchBar onSearch={setSearchTerm}/>
+        <CardBorder isAll={false} searchTerm={searchTerm}/>
+      </div>
+    )
 }
 
 export default page

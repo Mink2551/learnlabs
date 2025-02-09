@@ -1,11 +1,10 @@
 import React from 'react'
 
-function course() {
+function dash() {
   return (
     <div>
-      
     </div>
   )
 }
 
-export default course
+export default dash

@@ -1,4 +1,5 @@
 import { useState, useEffect, JSX } from "react";
+import Link from "next/link";
 
 function Banner() {
     const [page, setPage] = useState<number>(1);
@@ -25,7 +26,7 @@ function Banner() {
                     <div className="z-10 w-[100vw] p-7 relative h-[100%]">
                         <h1 className="font-bold text-white text-[5vh]">SC LearnLabs</h1>
                         <p className="ml-3 mt-2 min-w-[300px] max-w-[50%] text-[2vh] text-gray-400 font-medium">Learning Platform high Program Photo, Media, Graphic, Live, Data, Network</p>
-                        <button className="hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Course</button>
+                        <Link href='/course' className="justify-center items-center flex hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Course</Link>
                         <div className="absolute right-5 bottom-2 text-[10vh] h-fit text-white"><span className="font-bold">.</span>...</div>
                     </div>
                 </div>;
@@ -37,7 +38,7 @@ function Banner() {
                     <div className="z-10 w-[100vw] p-7 relative h-[100%]">
                         <h1 className="font-bold text-white text-[5vh]">SC WorkLabs</h1>
                         <p className="ml-3 mt-2 min-w-[300px] max-w-[50%] text-[2vh] text-gray-400 font-medium">Working Platform fast connection. Work space for Photo editor, Media editor, Graphic Designer, LiveMan and Fullstack</p>
-                        <button className="hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-5 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Work side</button>
+                        <Link href='#' className="justify-center items-center flex hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-5 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Work side</Link>
                         <div className="absolute right-5 bottom-2 text-[10vh] h-fit text-white">.<span className="font-bold">.</span>..</div>
                     </div>
                 </div>;
@@ -49,7 +50,7 @@ function Banner() {
                     <div className="z-10 w-[100vw] p-7 relative h-[100%]">
                         <h1 className="font-bold text-white text-[5vh]">Documents</h1>
                         <p className="ml-3 mt-2 min-w-[300px] max-w-[50%] text-[2vh] text-gray-400 font-medium">LearnLabs Structure and Diagram, Flowchart. Level & Class Explanations</p>
-                        <button className="hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Read</button>
+                        <Link href='/docs' className="justify-center items-center flex hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Read</Link>
                         <div className="absolute right-7 bottom-2 text-[10vh] h-fit text-white">..<span className="font-bold">.</span>.</div>
                     </div>
                 </div>;
@@ -61,7 +62,7 @@ function Banner() {
                     <div className="z-10 w-[100vw] p-7 relative h-[100%]">
                         <h1 className="font-bold text-white text-[5vh]">TestLabs</h1>
                         <p className="ml-3 mt-2 min-w-[300px] max-w-[50%] text-[2vh] text-gray-400 font-medium">Test Platform for Promoting Classes to Photo editor, Media editor, Graphic Designer, LiveMan, Fullstack</p>
-                        <button className="hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Tests</button>
+                        <Link href='/test' className="justify-center items-center flex hover:bg-yellow-700 hover:scale-110 hover:font-bold duration-100 bg-yellow-600 absolute bottom-7 text-white font-medium w-[10%] min-w-[150px] rounded-md min-h-[40px] text-xl">Tests</Link>
                         <div className="absolute right-5 bottom-2 text-[10vh] h-fit text-white">...<span className="font-bold">.</span></div>
                     </div>
                 </div>;
